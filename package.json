@@ -1,0 +1,16 @@
+{
+  "name": "mycdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-cdk/aws-glue-alpha": "^2.152.0-alpha.0",
+    "aws-cdk": "^2.151.0",
+    "typescript": "^5.5.4"
+  }
+}
