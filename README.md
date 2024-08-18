@@ -23,3 +23,18 @@ $ docker compose exec -u glue_user -w /home/glue_user/workspace/jupyter_workspac
 ```
 cdk deploy
 ```
+
+
+## 参考
+https://github.com/n-yokota/aws_glue_test_concept
+
+https://zenn.dev/shuntaka/scraps/bd6adab165f2d9
+
+https://qiita.com/sai2-dev/items/0796280cb7b28876d134
+
+
+## TODO
+* spark.confの外だし
+* pandera含むデプロイ
+* 共通モジュール使ったローカル実行
+* 共有モジュール含むデプロイ

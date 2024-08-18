@@ -1,12 +1,12 @@
 from pyspark.sql import SparkSession
 from glue_app.handlers.sample import translate
 
+
 def test_aaa(spark):
     assert 1 == 1
 
 
 def test_translate(spark: SparkSession):
-
     input_sdf = spark.createDataFrame(
         [
             [1, "test1", 10, 20],
