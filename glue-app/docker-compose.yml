@@ -2,10 +2,7 @@ version: '3.5'
 services:
   glue.dev.s3.local:
     container_name: s3.dev
-    image: localstack/localstack:0.12.8
-    ports:
-      - "127.0.0.1:4566:4566" 
-      - "127.0.0.1:4510-4559:4510-4559"
+    image: localstack/localstack:3.0.2
     environment:
       - SERVICES=s3
       # dummy configure
@@ -15,9 +12,12 @@ services:
       - AWS_SECRET_ACCESS_KEY=test
     networks:
       - glue.dev.network
-  glue.dev.summary:
+  glue.dev:
     container_name: glue.dev
-    image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
     volumes:
       - ./:/home/glue_user/workspace/jupyter_workspace
     environment:
@@ -27,7 +27,7 @@ services:
       - AWS_OUTPUT=json
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
-      - ENDPOINT_URL=http://glue.dev.localstack:4566
+      - ENDPOINT_URL=http://s3.dev:4566
     ports:
       # jupyterlabのポート
       - 8888:8888

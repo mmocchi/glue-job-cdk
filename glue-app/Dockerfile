@@ -9,9 +9,9 @@ USER glue_user
 
 WORKDIR /home/glue_user/workspace/jupyter_workspace
 
-COPY requirements.txt .
+COPY requirements_dev_container.txt /home/glue_user/workspace/jupyter_workspace/requirements_dev_container.txt
 
 RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements_dev_container.txt
 
 CMD ["/home/glue_user/jupyter/jupyter_start.sh"]
