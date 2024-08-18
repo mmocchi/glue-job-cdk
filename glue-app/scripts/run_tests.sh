@@ -16,6 +16,6 @@ docker compose exec -T -u glue_user -w /home/glue_user/workspace/jupyter_workspa
 # -u: ユーザー名指定。コンテナ内でsparkを実行できるユーザーにする
 # -w: cwdの指定。テストファイルをマウントしている場所でpytestを実行するため
 
-docker compose exec -T -u glue_user -w /home/glue_user/workspace/jupyter_workspace glue.dev  /home/glue_user/.local/bin/pytest $1
+docker compose exec -T -u glue_user -w /home/glue_user/workspace/jupyter_workspace glue.dev  /home/glue_user/.local/bin/pytest --cov=src $1
 
 
