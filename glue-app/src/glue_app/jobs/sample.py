@@ -10,22 +10,9 @@ from pandera.typing.pyspark import DataFrame
 from pandera.pyspark import DataFrameModel, Field
 from pyspark.sql.types import StringType, LongType
 
+from glue_app.schemes.schema import InputDataScheme, OutputDataScheme
+from glue_app.common.func import translate
 
-class InputDataScheme(DataFrameModel):
-    a: LongType = Field()
-    b: StringType = Field()
-    c: LongType = Field()
-    d: LongType = Field()
-
-    class Config:
-        strict = True
-
-
-class OutputDataScheme(InputDataScheme):
-    aaa: LongType = Field()
-
-    class Config:
-        strict = True
 
 
 @pa.check_types
@@ -46,14 +33,7 @@ def get_input_df() -> DataFrame[InputDataScheme]:
     )
     return input_sdf
 
-
-@pa.check_types
-def translate(input_df: DataFrame[InputDataScheme]) -> DataFrame[OutputDataScheme]:
-    print("start translate")
-    return input_df.withColumn("aaa", col("c") * 2)
-
-
-def save_output_df(output_df):
+def save_output_df(output_df: DataFrame[OutputDataScheme]):
     print("start save_output_df")
     output_dyn = DynamicFrame.fromDF(output_df, glue_context, "output")
     glue_context.write_dynamic_frame.from_options(

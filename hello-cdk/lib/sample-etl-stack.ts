@@ -12,7 +12,7 @@ export class SampleEtlStack extends Stack {
       executable: glue_alpha.JobExecutable.pythonEtl({
         glueVersion: glue_alpha.GlueVersion.V4_0,
         pythonVersion: glue_alpha.PythonVersion.THREE,
-        script: glue_alpha.Code.fromAsset('../glue-app/src/glue_app/handlers/sample.py'),
+        script: glue_alpha.Code.fromAsset('../glue-app/src/glue_app/jobs/sample.py'),
       }),
       workerType: glue_alpha.WorkerType.G_1X, 
       workerCount: 2,

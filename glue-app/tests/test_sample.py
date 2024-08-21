@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from glue_app.handlers.sample import translate
+from glue_app.jobs.sample import translate
 
 
 def test_aaa(spark):
