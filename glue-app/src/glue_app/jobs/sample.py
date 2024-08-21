@@ -53,13 +53,6 @@ def main():
 if __name__ == "__main__":
     args = getResolvedOptions(sys.argv, ["JOB_NAME"])
     sc = SparkContext()
-    sc._jsc.hadoopConfiguration().set("fs.s3a.endpoint", "http://s3.dev:4566")
-    sc._jsc.hadoopConfiguration().set("fs.s3a.path.style.access", "true")
-    sc._jsc.hadoopConfiguration().set("fs.s3a.signing-algorithm", "S3SignerType")
-    sc._jsc.hadoopConfiguration().set("fs.s3a.change.detection.mode", "None")
-    sc._jsc.hadoopConfiguration().set(
-        "fs.s3a.change.detection.version.required", "false"
-    )
     glue_context = GlueContext(sc)
 
     job = Job(glue_context)

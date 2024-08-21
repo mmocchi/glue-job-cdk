@@ -20,6 +20,7 @@ services:
     #image: amazon/aws-glue-libs:glue_libs_4.0.0_image_01
     volumes:
       - ./:/home/glue_user/workspace/jupyter_workspace
+      - ./spark.conf:/home/glue_user/spark/conf/spark-defaults.conf
     environment:
       - DISABLE_SSL=true
       # dummy configure

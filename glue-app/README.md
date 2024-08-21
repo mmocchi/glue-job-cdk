@@ -14,10 +14,13 @@ $ docker compose up --build -d
 ```
 
 ### Glue Jobを実行する
+
+コンテナの中に入る
 ```
 $ docker compose exec -u glue_user -w /home/glue_user/workspace/jupyter_workspace glue.dev bash
 ```
 
+Glue Jobの実行
 ```
 aws s3 mb s3://some-bucket --endpoint-url http://s3.dev:4566
 aws s3 ls --endpoint-url http://s3.dev:4566

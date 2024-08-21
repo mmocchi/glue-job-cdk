@@ -8,7 +8,7 @@ RUN yum update -y && yum install -y jq
 USER glue_user
 
 WORKDIR /home/glue_user/workspace/jupyter_workspace
-RUN export PYTHONPATH=$PYTHONPATH:/home/glue_user/workspace/jupyter_workspace/src
+ENV PYTHONPATH $PYTHONPATH:/home/glue_user/workspace/jupyter_workspace/src
 
 COPY requirements_dev_container.txt /home/glue_user/workspace/jupyter_workspace/requirements_dev_container.txt
 

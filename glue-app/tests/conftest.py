@@ -16,6 +16,11 @@ def _create_spark_session():
         .config("spark.sql. ui.retainedExecutions", "1")
         .config("spark.worker.ui.retainedExecutors", "1")
         .config("spark.worker.ui.retainedDrivers", "1")
+        .config("spark.hadoop.fs.s3a.endpoint", "http://s3.dev:4566")
+        .config("spark.hadoop.fs.s3a.path.style.access", "true")
+        .config("spark.hadoop.fs.s3a.signing-algorithm", "S3SignerType")
+        .config("spark.hadoop.fs.s3a.change.detection.mode", "None")
+        .config("spark.hadoop.fs.s3a.change.detection.version.required", "false")
         .getOrCreate()
     )
 
