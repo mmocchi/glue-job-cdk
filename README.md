@@ -28,4 +28,6 @@ https://qiita.com/sai2-dev/items/0796280cb7b28876d134
 
 
 ## TODO
+* GlueJobのデータソースと書き込み先をS3にする(CDK、ソースコード)
+* やっぱりライブラリ管理をPoetryに寄せてみる
 * GitHub ActionsによるCI/CD
