@@ -6,6 +6,7 @@
 * LocalStackとGlue Jobのコンテナによるローカル実行、単体テスト実行
 * pandoraによる実行時型チェック
 * CDKによるデプロイ
+* Glueアプリケーションのソースコードの構造化
 
 
 ## デプロイ
@@ -27,8 +28,4 @@ https://qiita.com/sai2-dev/items/0796280cb7b28876d134
 
 
 ## TODO
-* spark.confの外だし
-* pandera含むデプロイ
-* 共通モジュール使ったローカル実行
-* 共有モジュール含むデプロイ
 * GitHub ActionsによるCI/CD
