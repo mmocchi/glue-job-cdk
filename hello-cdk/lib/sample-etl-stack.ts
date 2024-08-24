@@ -4,8 +4,6 @@ import * as s3_deployment from "aws-cdk-lib/aws-s3-deployment";
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as glue from 'aws-cdk-lib/aws-glue';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import * as path from 'path';
-import * as fs from 'fs';
 import { execSync } from 'child_process';
 
 
