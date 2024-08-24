@@ -7,6 +7,8 @@
 * pandoraによる実行時型チェック
 * CDKによるデプロイ
 * Glueアプリケーションのソースコードの構造化
+* Glue DataCatalogでDataLake内のデータを定義
+* AthenaでData Catalog内のデータを確認できるように
 
 
 ## デプロイ
@@ -26,8 +28,7 @@ https://dev.classmethod.jp/articles/cdk-glue-python-shell-custom-functions/
 
 
 ## TODO
-* GlueJobのデータソースと書き込み先をS3にする(CDK、ソースコード)
-* やっぱりライブラリ管理をPoetryに寄せてみる
+* GlueJobのデータソースと書き込み先をDataCatalogで作ったS3にする(CDK、ソースコード)
 * Spark UIの有効化
 * Data Qualityを試してみたい
 * GitHub ActionsによるCI/CD

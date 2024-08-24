@@ -3,6 +3,8 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { HelloCdkStack } from '../lib/hello-cdk-stack';
 import { SampleEtlStack } from '../lib/sample-etl-stack';
+import { DataLakeStack } from '../lib/datalake-stack';
+import { AthenaWorkgroupStack } from '../lib/athena-stack';
 
 const app = new cdk.App();
 new HelloCdkStack(app, 'HelloCdkStack', {
@@ -22,3 +24,5 @@ new HelloCdkStack(app, 'HelloCdkStack', {
 });
 
 new SampleEtlStack(app, "SampleEtlStack", {});
+new DataLakeStack(app, "DatalakeStack", {});
+new AthenaWorkgroupStack(app, "AthenaWorkgroupStack", {});

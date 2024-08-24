@@ -10,17 +10,6 @@ readme = "README.md"
 requires-python = "==3.10"
 dependencies=[
     "pandera[pyspark]==0.20.3",
-
-    # include glue-job 4.0
-    # ここでglue-job 4.0組み込みのバージョンも管理できるようになると書かなくてもよくなりそう。
-    "numpy==1.23.5", # glue-job 4.0組み込みと同じバージョン
-    "pandas==1.5.1", # glue-job 4.0組み込みと同じバージョン
-    "packaging==23.0", # glue-job 4.0組み込みと同じバージョン
-    "python-dateutil==2.8.2", # glue-job 4.0組み込みと同じバージョン
-    "pytz==2021.1", # glue-job 4.0組み込みと同じバージョン
-    "six==1.16.0", # glue-job 4.0組み込みと同じバージョン
-    "typing_extensions==4.4.0", # glue-job 4.0組み込みと同じバージョン
-    "wrapt==1.14.1", # glue-job 4.0組み込みと同じバージョン
 ]
 
 [tool.uv]
@@ -37,9 +26,18 @@ test = [
     "pytest-cov==5.0.0",
 ]
 
-
-# TODO: ここでglue-job 4.0組み込みのバージョンも管理したいが、
-# 組み込みバージョンとして指定されたバージョンリストの依存関係が破綻しているため、一旦保留
+# ここでglue-job 4.0組み込みのバージョンを管理する
+# 組み込みバージョンとして指定されたバージョンリストの依存関係が破綻しているため、すべては記載していない
+awsglue4 = [
+    "numpy==1.23.5", # glue-job 4.0組み込みと同じバージョン
+    "pandas==1.5.1", # glue-job 4.0組み込みと同じバージョン
+    "packaging==23.0", # glue-job 4.0組み込みと同じバージョン
+    "python-dateutil==2.8.2", # glue-job 4.0組み込みと同じバージョン
+    "pytz==2021.1", # glue-job 4.0組み込みと同じバージョン
+    "six==1.16.0", # glue-job 4.0組み込みと同じバージョン
+    "typing_extensions==4.4.0", # glue-job 4.0組み込みと同じバージョン
+    "wrapt==1.14.1", # glue-job 4.0組み込みと同じバージョン
+]
 
 
 [tool.taskipy.tasks]

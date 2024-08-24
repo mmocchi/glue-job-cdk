@@ -1,0 +1,28 @@
+{
+    "SomeInputData": {
+        "database": "some_input_db",
+        "tables": {
+            "SomeInputTable": {
+                "tableName": "some_input_table",
+                "columns": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timestamp-value",
+                        "type": "timestamp"
+                    },                    
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "value1",
+                        "type": "double"
+                    }
+                ]
+            }
+        }
+    }
+}

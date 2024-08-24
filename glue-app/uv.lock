@@ -112,18 +112,20 @@ name = "glue-app"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pandera", extra = ["pyspark"] },
+]
+
+[package.optional-dependencies]
+awsglue4 = [
     { name = "numpy" },
     { name = "packaging" },
     { name = "pandas" },
-    { name = "pandera", extra = ["pyspark"] },
     { name = "python-dateutil" },
     { name = "pytz" },
     { name = "six" },
     { name = "typing-extensions" },
     { name = "wrapt" },
 ]
-
-[package.optional-dependencies]
 test = [
     { name = "pytest-cov" },
 ]
@@ -138,16 +140,16 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "numpy", specifier = "==1.23.5" },
-    { name = "packaging", specifier = "==23.0" },
-    { name = "pandas", specifier = "==1.5.1" },
+    { name = "numpy", marker = "extra == 'awsglue4'", specifier = "==1.23.5" },
+    { name = "packaging", marker = "extra == 'awsglue4'", specifier = "==23.0" },
+    { name = "pandas", marker = "extra == 'awsglue4'", specifier = "==1.5.1" },
     { name = "pandera", extras = ["pyspark"], specifier = "==0.20.3" },
     { name = "pytest-cov", marker = "extra == 'test'", specifier = "==5.0.0" },
-    { name = "python-dateutil", specifier = "==2.8.2" },
-    { name = "pytz", specifier = "==2021.1" },
-    { name = "six", specifier = "==1.16.0" },
-    { name = "typing-extensions", specifier = "==4.4.0" },
-    { name = "wrapt", specifier = "==1.14.1" },
+    { name = "python-dateutil", marker = "extra == 'awsglue4'", specifier = "==2.8.2" },
+    { name = "pytz", marker = "extra == 'awsglue4'", specifier = "==2021.1" },
+    { name = "six", marker = "extra == 'awsglue4'", specifier = "==1.16.0" },
+    { name = "typing-extensions", marker = "extra == 'awsglue4'", specifier = "==4.4.0" },
+    { name = "wrapt", marker = "extra == 'awsglue4'", specifier = "==1.14.1" },
 ]
 
 [package.metadata.requires-dev]

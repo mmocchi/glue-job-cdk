@@ -14,10 +14,34 @@ export class SampleEtlStack extends cdk.Stack {
     execSync(buildCommand, { cwd: '../glue-app', stdio: 'inherit' });
   }
 
+  private createRequirementsTxt(): string {
+    const createCommand = 'uv pip compile pyproject.toml --extra awsglue4 -o /tmp/requirements.txt';
+    execSync(createCommand, { cwd: '../glue-app', stdio: 'inherit' });
+    return '/tmp/requirements.txt';
+  }
+
+  private parseRequirementsTxt(requirementsFilePath: string): string[] {
+    const requirementsTxt = requirementsFilePath;
+    const requirements = execSync(`cat ${requirementsTxt}`).toString().split('\n');
+
+    // trim
+    requirements.forEach((line, index) => {
+      requirements[index] = line.trim();
+    });
+
+    // コメント行を除去
+    const commentPattern = /^#.*$/;
+    return requirements.filter((line) => !commentPattern.test(line));    
+  }
+
   constructor(scope: Construct, id: string, props: cdk.StackProps) {
     super(scope, id, props);
 
     this.buildGlueApp();
+
+    // requirements.txtを作成
+    const requirementsTxtPath = this.createRequirementsTxt();
+    const requirements = this.parseRequirementsTxt(requirementsTxtPath);
   
     // GlueJobのエントリーポイントとなるスクリプトを配置するためのS3バケットを作成
     const glueAppScriptBucket = new s3.Bucket(
@@ -73,14 +97,22 @@ export class SampleEtlStack extends cdk.Stack {
       ],
     }));
 
+    // CloudWatch Logsへのアクセス権限をIAMロールに付与
+    glueJobRole.addToPolicy(new iam.PolicyStatement({
+      actions: [
+        'logs:CreateLogGroup',
+        'logs:CreateLogStream',
+        'logs:PutLogEvents'
+      ],
+      resources: [
+        "arn:aws:logs:*:*:*:/aws-glue/*",
+        "arn:aws:logs:*:*:*:/customlogs/*"
+      ],
+    }));
+
     // Glue Jobに指定するモジュールの一覧
     const extraPyFiles = [
       `s3://${glueAppModuleBucket.bucketName}/modules/glue_app-0.1.0-py3-none-any.whl`,
-    ];
-
-    // 外部ライブラリの指定
-    const additionalPythonModules = [
-      'pandera[pyspark]'
     ];
 
     new glue.CfnJob(this, 'sampleEtlJob', {
@@ -96,7 +128,7 @@ export class SampleEtlStack extends cdk.Stack {
       workerType: 'G.1X',
       defaultArguments: {
         '--extra-py-files': extraPyFiles.join(','),
-        '--additional-python-modules': additionalPythonModules.join(',')
+        '--additional-python-modules': requirements.join(',')
       }
     });
   }

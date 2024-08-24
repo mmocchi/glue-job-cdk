@@ -1,0 +1,20 @@
+{
+    "SomeOutputData": {
+        "database": "some_output_db",
+        "tables": {
+            "SomeInputTable": {
+                "tableName": "some_output_table",
+                "columns": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "value1",
+                        "type": "double"
+                    }
+                ]
+            }
+        }
+    }
+}
