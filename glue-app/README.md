@@ -57,5 +57,5 @@ $ docker compose stop
 
 ## build(generate whl)
 ```
-poetry build
+uv run python -m build --wheel
 ```

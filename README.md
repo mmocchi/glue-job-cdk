@@ -26,8 +26,12 @@ https://zenn.dev/shuntaka/scraps/bd6adab165f2d9
 
 https://qiita.com/sai2-dev/items/0796280cb7b28876d134
 
+https://dev.classmethod.jp/articles/cdk-glue-python-shell-custom-functions/
+
 
 ## TODO
 * GlueJobのデータソースと書き込み先をS3にする(CDK、ソースコード)
 * やっぱりライブラリ管理をPoetryに寄せてみる
+* Spark UIの有効化
+* Data Qualityを試してみたい
 * GitHub ActionsによるCI/CD
