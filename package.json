@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-glue-app": "cd glue-app && uv run task build_wheel && ls -al dist/",
+    "deploy": "cd hello-cdk && cdk deploy --all"
   },
   "author": "",
   "license": "ISC",

@@ -1,2 +1,0 @@
-pandera[pyspark]
-pytest-cov

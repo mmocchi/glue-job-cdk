@@ -55,7 +55,7 @@ $ docker compose exec -u glue_user -w /home/glue_user/workspace/jupyter_workspac
 $ docker compose stop
 ```
 
-## build(generate whl)
+## build(generate wheel)
 ```
-uv run python -m build --wheel
+uv run task build_wheel
 ```

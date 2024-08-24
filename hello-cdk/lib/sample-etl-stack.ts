@@ -4,12 +4,23 @@ import * as s3_deployment from "aws-cdk-lib/aws-s3-deployment";
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as glue from 'aws-cdk-lib/aws-glue';
 import * as iam from 'aws-cdk-lib/aws-iam';
+import * as path from 'path';
+import * as fs from 'fs';
+import { execSync } from 'child_process';
 
 
 export class SampleEtlStack extends cdk.Stack {
+
+  private buildGlueApp(): void {
+    const buildCommand = 'uv run task build_wheel';
+    execSync(buildCommand, { cwd: '../glue-app', stdio: 'inherit' });
+  }
+
   constructor(scope: Construct, id: string, props: cdk.StackProps) {
     super(scope, id, props);
 
+    this.buildGlueApp();
+  
     // GlueJobのエントリーポイントとなるスクリプトを配置するためのS3バケットを作成
     const glueAppScriptBucket = new s3.Bucket(
       this,

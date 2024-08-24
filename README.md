@@ -11,11 +11,7 @@
 
 ## デプロイ
 ```
-cd glue-job
-poetry build
-
-cd ../hello-cdk
-cdk deploy
+npm run deploy
 ```
 
 
